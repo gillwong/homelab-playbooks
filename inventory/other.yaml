@@ -1,0 +1,10 @@
+---
+almalinux:
+  children:
+    k8s:
+    gitlab_runner:
+
+gitlab_runner:
+  hosts:
+    gitlab-runner-1:
+      ansible_host: 192.168.0.129

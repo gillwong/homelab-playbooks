@@ -1,0 +1,5 @@
+---
+- name: Configure GitLab Runner
+  hosts: gitlab_runner
+  roles:
+    - gillwong.homelab.gitlab_runner
