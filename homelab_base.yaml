@@ -1,0 +1,5 @@
+---
+- name: Apply base configuration
+  hosts: almalinux
+  roles:
+    - gillwong.homelab.base
