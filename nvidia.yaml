@@ -1,0 +1,5 @@
+---
+- name: Setup NVIDIA GPU drivers
+  hosts: nvidia
+  roles:
+    - gillwong.homelab.nvidia

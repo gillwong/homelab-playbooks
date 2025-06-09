@@ -1,0 +1,5 @@
+---
+- name: Apply base system configuration for Kubernetes nodes
+  hosts: k8s
+  roles:
+    - gillwong.homelab.k8s_base
