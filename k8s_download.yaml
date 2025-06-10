@@ -1,0 +1,7 @@
+---
+- name: Download Kubernetes-related files
+  hosts: localhost
+  roles:
+    - gillwong.homelab.k8s_download
+  vars:
+    k8s_download_dir: "{{ download_dir }}"

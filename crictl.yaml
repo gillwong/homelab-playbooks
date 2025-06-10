@@ -1,0 +1,7 @@
+---
+- name: Install crictl on Kubernetes nodes
+  hosts: k8s
+  roles:
+    - gillwong.homelab.crictl
+  vars:
+    crictl_download_dir: "{{ download_dir }}"

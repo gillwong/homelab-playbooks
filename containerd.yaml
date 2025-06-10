@@ -1,5 +1,7 @@
 ---
-- name: Install container runtime on Kubernetes nodes
+- name: Install containerd on Kubernetes nodes
   hosts: k8s
   roles:
     - gillwong.homelab.containerd
+  vars:
+    containerd_download_dir: "{{ download_dir }}"
