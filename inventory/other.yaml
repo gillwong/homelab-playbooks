@@ -3,7 +3,6 @@ almalinux:
   children:
     k8s:
     gitlab_runner:
-
 gitlab_runner:
   hosts:
     gitlab-runner-1:
