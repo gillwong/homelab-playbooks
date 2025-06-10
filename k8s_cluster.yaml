@@ -1,1 +1,16 @@
 ---
+- name: Install and configure NVIDIA GPU drivers
+  ansible.builtin.import_playbook: nvidia.yaml
+
+- name: Apply base system configuration to all Kubernetes nodes
+  hosts: k8s
+  roles:
+    - gillwong.homelab.k8s_base
+
+- name: Install containerd on all Kubernetes nodes
+  ansible.builtin.import_playbook: containerd.yaml
+
+- name: Install and configure NVIDIA GPU for Kubernetes
+  hosts: nvidia
+  roles:
+    - gillwong.homelab.nvidia_containerd
