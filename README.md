@@ -1,5 +1,7 @@
 # Homelab Playbooks
 
+A collection of Ansible playbooks for managing my homelab using [these Ansible roles](https://github.com/gillwong/homelab-collection).
+
 ## Configure all VMs
 
 ```bash
