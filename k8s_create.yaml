@@ -1,9 +1,54 @@
 ---
 - name: Initialize first Kubernetes control plane node
   hosts: k8s-cp-1
-  roles:
-    - role: gillwong.homelab.kubeadm_init
+  tasks:
+    - name: Initialize first Kubernetes control plane node
+      ansible.builtin.import_role:
+        name: gillwong.homelab.kubeadm_init
       vars:
         kubeadm_init_cluster_endpoint: "{{ k8s_cluster_endpoint }}"
         kubeadm_init_extra_sans:
           - k8s.gillwong.com
+
+    - name: Post kubeadm init
+      ansible.builtin.import_role:
+        name: gillwong.homelab.kubeadm_post
+
+    - name: Install pod networking Calico
+      ansible.builtin.import_role:
+        name: gillwong.homelab.calico
+      tags:
+        - calico
+
+    - name: Save control plane certificate key
+      become: true
+      ansible.builtin.shell: set -o pipefail && kubeadm init phase upload-certs --upload-certs | tail -1
+      register: k8s_cp_ca_key
+      changed_when: false
+      no_log: true
+
+    - name: Save kubeadm join command
+      become: true
+      ansible.builtin.command: kubeadm token create --print-join-command
+      register: kubeadm_join_command
+      changed_when: false
+
+- name: Join other Kubernetes control plane nodes
+  hosts: k8s_control_plane,!k8s-cp-1
+  roles:
+    - role: gillwong.homelab.kubeadm_join_cp
+      vars:
+        kubeadm_join_cp_cluster_endpoint: "{{ k8s_cluster_endpoint }}"
+        kubeadm_join_cp_token: "{{ hostvars['k8s-cp-1'].kubeadm_join_command.stdout.split()[4] }}"
+        kubeadm_join_cp_ca_cert_hash: "{{ hostvars['k8s-cp-1'].kubeadm_join_command.stdout.split()[6] }}"
+        kubeadm_join_cp_ca_key: "{{ hostvars['k8s-cp-1'].k8s_cp_ca_key.stdout }}"
+    - gillwong.homelab.kubeadm_post
+
+- name: Join Kubernetes worker nodes
+  hosts: k8s_worker
+  roles:
+    - gillwong.homelab.kubeadm_join_worker
+  vars:
+    kubeadm_join_worker_cluster_endpoint: "{{ k8s_cluster_endpoint }}"
+    kubeadm_join_worker_token: "{{ hostvars['k8s-cp-1'].kubeadm_join_command.stdout.split()[4] }}"
+    kubeadm_join_worker_ca_cert_hash: "{{ hostvars['k8s-cp-1'].kubeadm_join_command.stdout.split()[6] }}"
