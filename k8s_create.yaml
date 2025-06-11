@@ -1,0 +1,9 @@
+---
+- name: Initialize first Kubernetes control plane node
+  hosts: k8s-cp-1
+  roles:
+    - role: gillwong.homelab.kubeadm_init
+      vars:
+        kubeadm_init_cluster_endpoint: "{{ k8s_cluster_endpoint }}"
+        kubeadm_init_extra_sans:
+          - k8s.gillwong.com

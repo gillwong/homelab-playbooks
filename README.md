@@ -18,5 +18,6 @@ ansible-playbook gitlab_runner.yaml
 ## Configure Kubernetes Cluster
 
 ```bash
-ansible-playbook k8s_cluster.yaml
+ansible-playbook k8s_prepare.yaml
+ansible-playbook k8s_create.yaml
 ```

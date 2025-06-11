@@ -1,0 +1,5 @@
+---
+- name: Install and configure Kubernetes tools
+  hosts: k8s
+  roles:
+    - gillwong.homelab.k8s_tools

@@ -1,8 +1,6 @@
 ---
-- name: Apply base system configuration to all Kubernetes nodes
-  hosts: k8s
-  roles:
-    - gillwong.homelab.k8s_base
+- name: Prepare Kubernetes nodes
+  ansible.builtin.import_playbook: k8s_base.yaml
 
 - name: Download Kubernetes-related files
   ansible.builtin.import_playbook: k8s_download.yaml
@@ -17,3 +15,6 @@
 
 - name: Install crictl on all Kubernetes nodes
   ansible.builtin.import_playbook: crictl.yaml
+
+- name: Install and configure Kubernetes tools
+  ansible.builtin.import_playbook: k8s_tools.yaml

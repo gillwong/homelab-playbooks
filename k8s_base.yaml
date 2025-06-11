@@ -1,0 +1,14 @@
+---
+- name: Apply base system configuration to all Kubernetes nodes
+  hosts: k8s
+  roles:
+    - gillwong.homelab.k8s_base
+    - gillwong.homelab.calico_base
+    - gillwong.homelab.openebs_base
+
+- name: Apply system configuration to all Kubernetes control plane nodes
+  hosts: k8s_control_plane
+  roles:
+    - gillwong.homelab.k8s_cp_base
+  vars:
+    k8s_cp_base_cluster_endpoint: "{{ k8s_cluster_endpoint }}"
