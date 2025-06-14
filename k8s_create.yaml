@@ -9,6 +9,7 @@
         kubeadm_init_cluster_endpoint: "{{ k8s_cluster_endpoint }}"
         kubeadm_init_extra_sans:
           - k8s.gillwong.com
+        kubeadm_init_proxy_mode: "{{ k8s_kube_proxy_mode }}"
 
     - name: Post kubeadm init
       ansible.builtin.import_role:
@@ -17,6 +18,8 @@
     - name: Install pod networking Calico
       ansible.builtin.import_role:
         name: gillwong.homelab.calico
+      vars:
+        calico_kube_proxy_mode: "{{ k8s_kube_proxy_mode }}"
       tags:
         - calico
 

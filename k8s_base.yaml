@@ -2,7 +2,9 @@
 - name: Apply base system configuration to all Kubernetes nodes
   hosts: k8s
   roles:
-    - gillwong.homelab.k8s_base
+    - role: gillwong.homelab.k8s_base
+      vars:
+        k8s_base_proxy_mode: "{{ k8s_kube_proxy_mode }}"
     - gillwong.homelab.calico_base
     - gillwong.homelab.openebs_base
 
