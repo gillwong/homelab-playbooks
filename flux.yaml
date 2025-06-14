@@ -1,0 +1,8 @@
+---
+- name: Install and bootstrap Flux
+  hosts: k8s_control_plane
+  roles:
+    - gillwong.homelab.flux
+  vars:
+    flux_git_username: gillwong
+    flux_git_repository: homelab-gitops

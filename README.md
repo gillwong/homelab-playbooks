@@ -21,3 +21,9 @@ ansible-playbook gitlab_runner.yaml
 ansible-playbook k8s_prepare.yaml
 ansible-playbook k8s_create.yaml
 ```
+
+## Install Flux
+
+```bash
+ansible-playbook flux.yaml
+```

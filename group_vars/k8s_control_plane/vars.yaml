@@ -1,0 +1,2 @@
+---
+flux_git_token: "{{ vault_flux_git_token }}"
