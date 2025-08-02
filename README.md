@@ -40,6 +40,12 @@ A collection of Ansible playbooks for managing my homelab using [these Ansible r
 
 ## Usage
 
+### Configure Proxmox Virtual Environment Nodes
+
+```bash
+ansible-playbook pve.yaml
+```
+
 ### Configure all VMs
 
 ```bash
