@@ -5,3 +5,6 @@
     - gillwong.homelab.containerd
   vars:
     containerd_download_dir: "{{ download_dir }}"
+    containerd_runc_version: "{{ k8s_runc_version }}"
+    containerd_version: "{{ k8s_containerd_version }}"
+    containerd_cni_plugins_version: "{{ k8s_cni_plugins_version }}"

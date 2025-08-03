@@ -5,3 +5,4 @@
     - gillwong.homelab.crictl
   vars:
     crictl_download_dir: "{{ download_dir }}"
+    crictl_version: "{{ k8s_crictl_version }}"

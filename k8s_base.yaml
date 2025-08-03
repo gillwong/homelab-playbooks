@@ -14,3 +14,5 @@
     - gillwong.homelab.k8s_cp_base
   vars:
     k8s_cp_base_cluster_endpoint: "{{ k8s_cluster_endpoint }}"
+    k8s_cp_base_kube_vip_version: "{{ k8s_kube_vip_version }}"
+    k8s_cp_base_kube_vip_interface: "{{ k8s_vip_interface }}"

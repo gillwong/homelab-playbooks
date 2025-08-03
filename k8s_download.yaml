@@ -5,3 +5,7 @@
     - gillwong.homelab.k8s_download
   vars:
     k8s_download_dir: "{{ download_dir }}"
+    k8s_download_runc_version: "{{ k8s_runc_version }}"
+    k8s_download_containerd_version: "{{ k8s_containerd_version }}"
+    k8s_download_cni_plugins_version: "{{ k8s_cni_plugins_version }}"
+    k8s_download_crictl_version: "{{ k8s_crictl_version }}"
