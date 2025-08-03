@@ -1,0 +1,13 @@
+---
+- name: Upgrade packages
+  hosts: almalinux
+  tasks:
+    - name: Upgrade packages
+      become: true
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+
+    - name: Reboot
+      become: true
+      ansible.builtin.reboot:
