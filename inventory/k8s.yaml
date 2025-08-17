@@ -18,3 +18,7 @@ k8s_worker:
       ansible_host: 192.168.0.134
     k8s-worker-2:
       ansible_host: 192.168.0.135
+    k8s-worker-3:
+      ansible_host: 192.168.0.136
+    k8s-worker-4:
+      ansible_host: 192.168.0.137
