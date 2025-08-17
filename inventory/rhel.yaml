@@ -1,7 +1,7 @@
 ---
-pve:
+rhel:
   hosts:
-    pve1:
+    gmsi:
       ansible_host: 192.168.0.11
-    pve2:
+    geqr5:
       ansible_host: 192.168.0.12

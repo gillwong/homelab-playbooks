@@ -1,0 +1,22 @@
+---
+- name: Configure Proxmox Virtual Environment nodes
+  hosts: rhel
+  roles:
+    - gillwong.homelab.ntp
+
+- name: Install packages
+  hosts: rhel
+  tasks:
+    - name: Install cockpit-machines
+      become: true
+      ansible.builtin.dnf:
+        name: cockpit-machines
+        state: present
+
+- name: Setup VM hosts
+  hosts: rhel
+  roles:
+    - gillwong.homelab.libvirt_base
+    - role: gillwong.homelab.update_libosinfo
+      vars:
+        update_libosinfo_version: "20250606"
