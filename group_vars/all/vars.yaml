@@ -8,4 +8,4 @@ k8s_containerd_version: 2.1.4
 k8s_cni_plugins_version: 1.7.1
 k8s_crictl_version: 1.33.0
 k8s_kube_vip_version: 1.0.0
-k8s_vip_interface: ens18
+k8s_vip_interface: eth0
