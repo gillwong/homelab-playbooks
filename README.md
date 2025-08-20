@@ -46,6 +46,12 @@ A collection of Ansible playbooks for managing my homelab using [these Ansible r
 ansible-playbook pve.yaml
 ```
 
+### Configure RHEL libvirt Hosts
+
+```bash
+ansible-playbook rhel_hosts.yaml
+```
+
 ### Configure all VMs
 
 ```bash
