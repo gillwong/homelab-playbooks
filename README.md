@@ -59,6 +59,24 @@ ansible-playbook nvidia.yaml
 ansible-playbook gitlab_runner.yaml
 ```
 
+### Create VMs for Kubernetes Cluster
+
+```bash
+ansible-playbook k8s_vm_create.yaml
+```
+
+Then, inside the last VM (by default 192.168.0.137), wait for cloud-init to finish:
+
+```bash
+sudo cloud-init status --wait
+```
+
+Then, shutdown all VMs and start them manually to apply TPM configuration for UEFI:
+
+```bash
+ansible-playbook k8s_vm_shutdown.yaml
+```
+
 ### Configure Kubernetes Cluster
 
 ```bash
