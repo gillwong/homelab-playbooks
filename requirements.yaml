@@ -3,5 +3,4 @@ collections:
   - community.general
   - community.libvirt
   - ansible.posix
-  - name: ../homelab-collection
-    type: dir
+  - gillwong.homelab

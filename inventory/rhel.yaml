@@ -1,7 +1,11 @@
 ---
 rhel:
   hosts:
-    gmsi:
+    gser5:
       ansible_host: 192.168.0.11
+      default_vg_name: vmdata_gser5_crucialp310
+      second_vg_name: vmdata_gser5_wdblue
     geqr5:
       ansible_host: 192.168.0.12
+      default_vg_name: vmdata_geqr5_crucialp310
+      second_vg_name: vmdata_geqr5_samsung970evoplus

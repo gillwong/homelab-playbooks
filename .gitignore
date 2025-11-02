@@ -1,3 +1,4 @@
 .vscode/
 mise.toml
 .ansible/
+requirements.local.yaml

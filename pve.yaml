@@ -1,6 +1,0 @@
----
-- name: Configure Proxmox Virtual Environment nodes
-  hosts: pve
-  remote_user: root
-  roles:
-    - gillwong.homelab.pve

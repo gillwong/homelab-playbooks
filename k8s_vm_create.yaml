@@ -1,14 +1,16 @@
 ---
-- name: Create VMs on gmsi host
-  hosts: gmsi
+- name: Create VMs on gser5 host
+  hosts: gser5
   roles:
     - role: gillwong.homelab.create_almalinux_vm
       vars:
-        create_almalinux_vm_name: k8s-cp-1
+        create_almalinux_vm_name: k8s-cp-3
         create_almalinux_vm_ipv4s:
-          - 192.168.0.131/24
+          - 192.168.0.133/24
         create_almalinux_vm_mem_mib: 8192
         create_almalinux_vm_vcpus: 4
+        create_almalinux_vm_pool: lvmpool1
+        create_almalinux_vm_vg: vmdata_gser5_wdblue
         create_almalinux_vm_vol_cap_g: 128
     - role: gillwong.homelab.create_almalinux_vm
       vars:
@@ -17,7 +19,9 @@
           - 192.168.0.134/24
         create_almalinux_vm_mem_mib: 12288
         create_almalinux_vm_vcpus: 4
-        create_almalinux_vm_vol_cap_g: 256
+        create_almalinux_vm_pool: lvmpool0
+        create_almalinux_vm_vg: vmdata_gser5_crucialp310
+        create_almalinux_vm_vol_cap_g: 800
     - role: gillwong.homelab.create_almalinux_vm
       vars:
         create_almalinux_vm_name: k8s-worker-2
@@ -25,10 +29,11 @@
           - 192.168.0.135/24
         create_almalinux_vm_mem_mib: 12288
         create_almalinux_vm_vcpus: 4
-        create_almalinux_vm_vol_cap_g: 256
+        create_almalinux_vm_pool: lvmpool1
+        create_almalinux_vm_vg: vmdata_gser5_wdblue
+        create_almalinux_vm_vol_cap_g: 800
   vars:
     create_almalinux_vm_pubkeys: "{{ vm_pubkeys }}"
-    create_almalinux_vm_pool: lvmpool
     create_almalinux_vm_bridge: bridge0
 
 - name: Create VMs on geqr5 host
@@ -36,37 +41,44 @@
   roles:
     - role: gillwong.homelab.create_almalinux_vm
       vars:
-        create_almalinux_vm_name: k8s-cp-2
+        create_almalinux_vm_name: k8s-cp-1
         create_almalinux_vm_ipv4s:
-          - 192.168.0.132/24
-        create_almalinux_vm_mem_mib: 6144
+          - 192.168.0.131/24
+        create_almalinux_vm_mem_mib: 8192
         create_almalinux_vm_vcpus: 4
+        create_almalinux_vm_pool: lvmpool0
+        create_almalinux_vm_vg: vmdata_geqr5_crucialp310
         create_almalinux_vm_vol_cap_g: 128
     - role: gillwong.homelab.create_almalinux_vm
       vars:
-        create_almalinux_vm_name: k8s-cp-3
+        create_almalinux_vm_name: k8s-cp-2
         create_almalinux_vm_ipv4s:
-          - 192.168.0.133/24
-        create_almalinux_vm_mem_mib: 6144
+          - 192.168.0.132/24
+        create_almalinux_vm_mem_mib: 8192
         create_almalinux_vm_vcpus: 4
+        create_almalinux_vm_pool: lvmpool1
+        create_almalinux_vm_vg: vmdata_geqr5_samsung970evoplus
         create_almalinux_vm_vol_cap_g: 128
     - role: gillwong.homelab.create_almalinux_vm
       vars:
         create_almalinux_vm_name: k8s-worker-3
         create_almalinux_vm_ipv4s:
           - 192.168.0.136/24
-        create_almalinux_vm_mem_mib: 10240
+        create_almalinux_vm_mem_mib: 12288
         create_almalinux_vm_vcpus: 4
-        create_almalinux_vm_vol_cap_g: 256
+        create_almalinux_vm_pool: lvmpool1
+        create_almalinux_vm_vg: vmdata_geqr5_samsung970evoplus
+        create_almalinux_vm_vol_cap_g: 800
     - role: gillwong.homelab.create_almalinux_vm
       vars:
         create_almalinux_vm_name: k8s-worker-4
         create_almalinux_vm_ipv4s:
           - 192.168.0.137/24
-        create_almalinux_vm_mem_mib: 10240
+        create_almalinux_vm_mem_mib: 12288
         create_almalinux_vm_vcpus: 4
-        create_almalinux_vm_vol_cap_g: 256
+        create_almalinux_vm_pool: lvmpool0
+        create_almalinux_vm_vg: vmdata_geqr5_crucialp310
+        create_almalinux_vm_vol_cap_g: 780
   vars:
     create_almalinux_vm_pubkeys: "{{ vm_pubkeys }}"
-    create_almalinux_vm_pool: lvmpool
     create_almalinux_vm_bridge: bridge0

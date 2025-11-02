@@ -40,11 +40,11 @@ A collection of Ansible playbooks for managing my homelab using [these Ansible r
 
 ## Usage
 
-### Configure Proxmox Virtual Environment Nodes
+### Create LVM Volume Group
 
-```bash
-ansible-playbook pve.yaml
-```
+- [Getting started with partitions](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/managing_storage_devices/getting-started-with-partitions)
+- [Managing LVM physical volumes](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/configuring_and_managing_logical_volumes/managing-lvm-physical-volumes)
+- [Managing LVM volume groups](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/configuring_and_managing_logical_volumes/managing-lvm-volume-groups)
 
 ### Configure RHEL libvirt Hosts
 
@@ -57,12 +57,6 @@ ansible-playbook rhel_hosts.yaml
 ```bash
 ansible-playbook homelab_base.yaml
 ansible-playbook nvidia.yaml
-```
-
-### Configure GitLab Runner
-
-```bash
-ansible-playbook gitlab_runner.yaml
 ```
 
 ### Create VMs for Kubernetes Cluster

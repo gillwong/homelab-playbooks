@@ -1,10 +1,10 @@
 ---
-- name: Shutdown VMs on gmsi host
-  hosts: gmsi
+- name: Shutdown VMs on gser5 host
+  hosts: gser5
   roles:
     - role: gillwong.homelab.shutdown_vm
       vars:
-        shutdown_vm_name: k8s-cp-1
+        shutdown_vm_name: k8s-cp-3
     - role: gillwong.homelab.shutdown_vm
       vars:
         shutdown_vm_name: k8s-worker-1
@@ -17,10 +17,10 @@
   roles:
     - role: gillwong.homelab.shutdown_vm
       vars:
-        shutdown_vm_name: k8s-cp-2
+        shutdown_vm_name: k8s-cp-1
     - role: gillwong.homelab.shutdown_vm
       vars:
-        shutdown_vm_name: k8s-cp-3
+        shutdown_vm_name: k8s-cp-2
     - role: gillwong.homelab.shutdown_vm
       vars:
         shutdown_vm_name: k8s-worker-3

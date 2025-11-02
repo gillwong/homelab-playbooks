@@ -6,7 +6,19 @@
 
 - name: Install packages
   hosts: rhel
+  handlers:
+    - name: Reboot system
+      become: true
+      ansible.builtin.reboot:
+
   tasks:
+    - name: Install virtualization packages
+      become: true
+      ansible.builtin.dnf:
+        name: "@Virtualization Host"
+        state: present
+      notify: Reboot system
+
     - name: Install cockpit-machines
       become: true
       ansible.builtin.dnf:
@@ -16,7 +28,14 @@
 - name: Setup VM hosts
   hosts: rhel
   roles:
-    - gillwong.homelab.libvirt_base
+    - role: gillwong.homelab.libvirt_base
+      vars:
+        libvirt_base_pool_name: lvmpool0
+        libvirt_base_vg_name: "{{ default_vg_name }}"
+    - role: gillwong.homelab.libvirt_base
+      vars:
+        libvirt_base_pool_name: lvmpool1
+        libvirt_base_vg_name: "{{ second_vg_name }}"
     - role: gillwong.homelab.update_libosinfo
       vars:
         update_libosinfo_version: "20250606"
